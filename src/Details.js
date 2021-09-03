@@ -7,6 +7,8 @@ class Details extends React.Component {
   state = { loading: true };
 
   async componentDidMount() {
+    console.log(this.props.match.params.id);
+    console.log("???");
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
     );
@@ -19,15 +21,8 @@ class Details extends React.Component {
       return <h2>loading ...</h2>;
     }
 
-    const {
-      animal,
-      breed,
-      city,
-      state,
-      description,
-      name,
-      images,
-    } = this.state;
+    const { animal, breed, city, state, description, name, images } =
+      this.state;
 
     return (
       <div className="details">
@@ -43,7 +38,7 @@ class Details extends React.Component {
   }
 }
 
-const DetailsWithRouter = withRouter(Details);
+const DetailsErrorRouter = withRouter(Details);
 export default function DetailsErrorBoundary(props) {
   return (
     <ErrorBoundary>
